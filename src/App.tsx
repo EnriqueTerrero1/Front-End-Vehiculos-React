@@ -1,26 +1,46 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
+import { BrowserRouter, Route, Routes,Link } from 'react-router-dom';
+import Menu from './Menu';
+import configureValidations from './Validations';
+import ShowMarcas from './Marca/ShowMarcas';
+import CrearMarca from './Marca/CrearMarca';
+import ShowCarros from './Carro/ShowCarros';
+import CrearCarro from './Carro/CrearCarro';
+configureValidations();
+
 function App() {
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <>
+    <BrowserRouter>
+       <Menu></Menu>
+      <Routes>
+       
+       {/* //<Route index element={<Menu></Menu>}></Route> */}
+        <Route path="Carro" element={<ShowCarros></ShowCarros>}></Route> 
+        <Route path="/Carro/Crear" element={<CrearCarro></CrearCarro>}></Route> 
+
+       <Route path="Marca" element={<ShowMarcas></ShowMarcas>}></Route>
+       <Route path="/Marca/Crear" element={<CrearMarca></CrearMarca>}></Route>
+
+   </Routes>
+
+
+
+
+
+
+
+
+   </BrowserRouter>
+    
+    </>
+
+  )
 }
 
 export default App;
