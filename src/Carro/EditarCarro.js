@@ -30,6 +30,7 @@ export default function EditarCarro() {
     setCarroYear(respuesta.data.año);
     setCarroMarca(respuesta.data.marca);
     setCarroCosto(respuesta.data.costo);
+    setMarcaId(respuesta.data.marca.id);
 
 
 
@@ -55,7 +56,7 @@ export default function EditarCarro() {
         "model": CarroModel,
         "color": CarroColor,
         "año": CarroYear,
-        "marcaid": CarroMarca.id,
+        "marcaid": MarcaId,
         "costo": CarroCosto,
         "id": CarroId,
 
@@ -105,7 +106,7 @@ export default function EditarCarro() {
             </select>
             <label htmlFor="exampleFormControlInput1" className="form-label">Marca</label>
 
-            <select className="form-control" onChange={(e) => setCarroMarca(e.target.value)}>
+            <select className="form-control" onChange={(e) => setMarcaId(e.target.value)}>
               {/* <option key={marca.id} value={marca.id}>{marca.name}</option> */}
               <option defaultValue value={CarroMarca.id}>{CarroMarca.name}</option>
 
