@@ -5,7 +5,9 @@ export default function ListaCarro({Carros}){
 
     return (<>
 
-    <h1>Carros</h1>
+    <h1>Vehiculos</h1>
+
+    <div className=" container shadow-4 rounded-5 overflow-hidden">
      <table className="  table table-striped table-hover">
   <thead className="table bg-light">
     <tr  >
@@ -29,12 +31,13 @@ export default function ListaCarro({Carros}){
     <td>{Carro.color}</td>
     <td>{Carro.año}</td>
     <td>{Carro.costo}</td>                                                                                                          
-    <td > <Link to={`/Carro/Editar/${Carro.id}`}><button className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"  ><i className="bi bi-pencil-fill"></i></button></Link>
-   <Link to={`/Carro/eliminar/${Carro.id}`}> <button className="btn btn-danger"  data-bs-toggle="modal" data-bs-target="#examplemodalEliminar"  ><i className="bi bi-x-circle-fill"></i></button> </Link> </td>
+    <td > <Link to={`/Carro/Editar/${Carro.id}`}><button className="btn btn-primary"  ><i className="bi bi-pencil-fill"></i></button></Link>
+   <Link to={`/Carro/eliminar/${Carro.id}`}> <button className="btn btn-danger"    ><i className="bi bi-x-circle-fill"></i></button> </Link> </td>
     </tr>
    ))}
     
   </tbody>
 </table>
+</div>
 </>)
 }

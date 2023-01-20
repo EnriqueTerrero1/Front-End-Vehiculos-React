@@ -25,8 +25,6 @@ export default function EditarMarca(){
 
       const [marcaName, setMarcaName] = useState('');
     
-     
-
 
       async function editarMarca() {
         try {
@@ -50,7 +48,7 @@ export default function EditarMarca(){
     return(
         <>
         <h1>Editar Marca</h1>
-            <div className="container" style={{justifyContent:"center", margin:"0 auto",alignItems:"center"}}>
+            <div className="container w-25 p-3" style={{justifyContent:"center", margin:"0 auto",alignItems:"center"}}>
 
         <form  >
        < div className="container-hijo">
@@ -63,9 +61,6 @@ export default function EditarMarca(){
               </div>
               </div>
               </form>
-
-
-             
               </div>
         </>
     )

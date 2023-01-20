@@ -5,7 +5,6 @@ import './App.css';
 
 import { BrowserRouter, Route, Routes,Link } from 'react-router-dom';
 import Menu from './Menu';
-import configureValidations from './Validations';
 import Marcas from './Marca/Marcas';
 import CrearMarca from './Marca/CrearMarca';
 import CrearCarro from './Carro/CrearCarro';
@@ -15,7 +14,6 @@ import Carros from './Carro/Carros';
 import EliminarCarro from './Carro/EliminarCarro';
 import EditarCarro from './Carro/EditarCarro';
 
-configureValidations();
 
 function App() {
 

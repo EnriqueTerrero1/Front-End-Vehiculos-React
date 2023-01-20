@@ -33,8 +33,5 @@ export default function Marcas() {
     {isLoading && <div>Cargando...</div>}
      { marcas && <ListaMarcas marcas={marcas}  />}
 
-     
-
-
     </>)
 }
