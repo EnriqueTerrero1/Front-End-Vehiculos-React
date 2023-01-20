@@ -2,13 +2,19 @@ import React, { useEffect, useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
+
 import { BrowserRouter, Route, Routes,Link } from 'react-router-dom';
 import Menu from './Menu';
 import configureValidations from './Validations';
-import ShowMarcas from './Marca/ShowMarcas';
+import Marcas from './Marca/Marcas';
 import CrearMarca from './Marca/CrearMarca';
-import ShowCarros from './Carro/ShowCarros';
 import CrearCarro from './Carro/CrearCarro';
+import EliminarMarca from './Marca/EliminarMarca';
+import EditarMarca from './Marca/EditarMarca';
+import Carros from './Carro/Carros';
+import EliminarCarro from './Carro/EliminarCarro';
+import EditarCarro from './Carro/EditarCarro';
+
 configureValidations();
 
 function App() {
@@ -19,22 +25,18 @@ function App() {
     <BrowserRouter>
        <Menu></Menu>
       <Routes>
-       
-       {/* //<Route index element={<Menu></Menu>}></Route> */}
-        <Route path="Carro" element={<ShowCarros></ShowCarros>}></Route> 
+      <Route path="/" element={<Carros></Carros>}></Route> 
+
+        <Route path="Carro" element={<Carros></Carros>}></Route> 
         <Route path="/Carro/Crear" element={<CrearCarro></CrearCarro>}></Route> 
+        <Route path='/Carro/Eliminar/:id'element={<EliminarCarro></EliminarCarro>}></Route>
+        <Route path='/Carro/Editar/:id'element={<EditarCarro></EditarCarro>}></Route>
 
-       <Route path="Marca" element={<ShowMarcas></ShowMarcas>}></Route>
+       <Route path="Marca" element={<Marcas/>}></Route>
        <Route path="/Marca/Crear" element={<CrearMarca></CrearMarca>}></Route>
-
+        <Route path='/Marca/Eliminar/:id'element={<EliminarMarca></EliminarMarca>}></Route>
+        <Route path='/Marca/Editar/:id'element={<EditarMarca></EditarMarca>}></Route>
    </Routes>
-
-
-
-
-
-
-
 
    </BrowserRouter>
     

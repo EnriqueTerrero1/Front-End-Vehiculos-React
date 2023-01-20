@@ -1,13 +1,17 @@
 import { useState,useEffect } from "react";
 import { urlCarros, urlMarcas } from "../endpoints";
 import axios from 'axios';
+import {  useNavigate } from 'react-router-dom';
 
 
 export default function CrearMarca() {
+    const navigate = useNavigate()
 
 
     useEffect(()=>{
         getMarcas();
+        getYears();
+
     },[]);
 
     const [marcas,setMarcas]=useState([]);
@@ -24,6 +28,20 @@ export default function CrearMarca() {
     const [CarroMarca, setCarroMarca] = useState('');
     const [CarroCost, setCarroCost] = useState('');
 
+    const [year,setYear]=useState(new Date().getFullYear());
+
+    const [years,setYears]=useState([]);
+
+   const getYears=()=>{
+        for(var index = 0;index<25;index++){
+             years.push(year-index);
+            
+        }
+    }
+
+  
+
+    
 
     async function CrearCarro() {
         try {
@@ -35,7 +53,8 @@ export default function CrearMarca() {
                 costo: CarroCost.trim(),
 
             };
-            await axios.post(urlCarros, CarroCreacionDTO);
+            console.log(CarroCreacionDTO);
+            await axios.post(urlCarros, CarroCreacionDTO).then( navigate('/Carro'));
         } catch (error) {
             console.log(error);
 
@@ -45,18 +64,30 @@ export default function CrearMarca() {
 
 
     return (<>
+    <h1>Crear Carro</h1>
+        <div className="container" style={{justifyContent:"center", margin:"0 auto",alignItems:"center"}}>
+
         <form onSubmit={CrearCarro} >
-            <div className="mb-3">
-                <label htmlFor="exampleFormControlInput1" className="form-label">Modelo</label>
+        <div className="container-hijo">
+                <label htmlFor="exampleFormControlInput1" className="form-label">Modelo:</label>
                 <input type="text" value={CarroModel} className="form-control" id="exampleFormControlInput1" onChange={(e) => setCarroModel(e.target.value)} ></input>
-                <label htmlFor="exampleFormControlInput1" className="form-label">Color</label>
+                <label htmlFor="exampleFormControlInput1" className="form-label">Color:</label>
                 <input type="text" value={CarroColor} className="form-control" id="exampleFormControlInput1" onChange={(e) => setCarroColor(e.target.value)} ></input>
-                <label htmlFor="exampleFormControlInput1" className="form-label">Costo</label>
+                <label htmlFor="exampleFormControlInput1" className="form-label">Costo:</label>
                 <input type="text" value={CarroCost} className="form-control" id="exampleFormControlInput1" onChange={(e) => setCarroCost(e.target.value)} ></input>
-                <label htmlFor="exampleFormControlInput1" className="form-label">Fecha</label>
-                <input type="date" value={CarroYear} className="form-control" id="exampleFormControlInput1" onChange={(e) => setCarroYear(e.target.value)} ></input>
+                <label htmlFor="exampleFormControlInput1" className="form-label">Fecha:</label>
               
-                <label htmlFor="exampleFormControlInput1" className="form-label">Marca</label>
+
+                <select className="form-control"  onChange={(e) => {setCarroYear(e.target.value)}}>
+                <option defaultValue>Seleccionar año</option>
+                  {years.map((year,i)=>(
+                     <option key={i+1} value={year}>{year}</option>
+                  ))} 
+                </select>
+
+
+
+                <label htmlFor="exampleFormControlInput1" className="form-label">Marca:</label>
 
                 <select className="form-control"  onChange={(e) => setCarroMarca(e.target.value)}>
                 {/* <option key={marca.id} value={marca.id}>{marca.name}</option> */}
@@ -65,11 +96,15 @@ export default function CrearMarca() {
                      <option key={marca.id} value={marca.id}>{marca.name}</option>
                   ))} 
                 </select>
-            </div>
-            <button className=" btn btn-primary">Crear Carro</button>
-            <button className="btn btn-danger">Cancelar</button>
+            
+            <div className="botones">
 
+            <button className=" btn btn-primary" onClick={CrearCarro}>Crear Carro</button>
+            <button className="btn btn-danger" onClick={()=>( navigate('/Carro'))}>Cancelar</button>
+            </div>
+            </div>
         </form>
+        </div>
 
 
     </>)

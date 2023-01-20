@@ -1,0 +1,40 @@
+
+
+import { Link } from "react-router-dom"
+export default function ListaCarro({Carros}){
+
+    return (<>
+
+    <h1>Carros</h1>
+     <table className="  table table-striped table-hover">
+  <thead className="table bg-light">
+    <tr  >
+      <th scope="col">#</th>
+      <th scope="col">Id</th>
+      <th scope="col">Modelo</th>
+      <th scope="col">Marca</th>
+      <th scope="col">Color</th>
+      <th scope="col">Año</th>
+      <th scope="col">Costo</th>
+      <th  scope="col">Acciones</th>
+    </tr>
+  </thead>
+  <tbody >
+   {Carros.map((Carro,i)=>(
+    <tr  key={Carro.id}>
+    <td>{i+1}</td>
+    <td>{Carro.id}</td>
+    <td>{Carro.model}</td>
+    <td>{Carro.marca.name}</td>
+    <td>{Carro.color}</td>
+    <td>{Carro.año}</td>
+    <td>{Carro.costo}</td>                                                                                                          
+    <td > <Link to={`/Carro/Editar/${Carro.id}`}><button className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"  ><i className="bi bi-pencil-fill"></i></button></Link>
+   <Link to={`/Carro/eliminar/${Carro.id}`}> <button className="btn btn-danger"  data-bs-toggle="modal" data-bs-target="#examplemodalEliminar"  ><i className="bi bi-x-circle-fill"></i></button> </Link> </td>
+    </tr>
+   ))}
+    
+  </tbody>
+</table>
+</>)
+}

@@ -12,9 +12,7 @@ export default function Menu(){
   </button>
   <div className="collapse navbar-collapse" id="navbarNav">
     <ul className="navbar-nav">
-      <li className="nav-item active">
-        <Link className="nav-link" to="/home">Home <span className="sr-only">(current)</span></Link>
-      </li>
+     
       <li className="nav-item">
         <Link className="nav-link" to="/Carro">Carros</Link>
       </li>
